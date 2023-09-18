@@ -1,15 +1,13 @@
 <script lang="ts">
-	import { onMount } from 'svelte';
-
-	let ready: boolean = false;
-	onMount(() => (ready = true));
 </script>
+
+<svelte:head>
+	<title>Sveltekit + Electron</title>
+</svelte:head>
 
 <div class="dragbar" />
 
-{#if ready}
-	<slot />
-{/if}
+<slot />
 
 <style>
 	.dragbar {

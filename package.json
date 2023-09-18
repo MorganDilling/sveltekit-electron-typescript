@@ -16,14 +16,14 @@
     }
   ],
 
-	"main": "src/electron.cjs",
+	"main": "src/electron.ts",
 	"type": "module",
 	
 	"scripts": {
 		"dev": "cross-env NODE_ENV=dev pnpm dev:all",
 		"dev:all": "concurrently -n=svelte,electron -c='#ff3e00',blue \"pnpm dev:svelte\" \"pnpm dev:electron\"",
 		"dev:svelte": "vite dev",
-		"dev:electron": "electron src/electron.cjs",
+		"dev:electron": "electron -r ts-node/register src/electron/electron.ts",
 		"build": "cross-env NODE_ENV=production pnpm build:svelte && pnpm build:electron",
 		"build:svelte": "vite build",
 		"build:electron": "electron-builder -mwl --config build.config.json"
@@ -67,7 +67,8 @@
 		"svelte-preprocess": "^5.0.3",
 		"tslib": "^2.5.0",
 		"typescript": "^4.9.4",
-		"vite": "^4.0.4"
+		"vite": "^4.0.4",
+		"ts-node": "^10.9.1"
 	},
 	"overrides": {
 		"electron": {
