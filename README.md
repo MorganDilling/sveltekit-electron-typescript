@@ -4,17 +4,12 @@
 
 # Sveltekit + Electron
 
-Minimal [Sveltekit](https://github.com/sveltejs/kit#readme) + [Electron](https://www.electronjs.org/) starter template.
+Minimal [Sveltekit](https://github.com/sveltejs/kit#readme) + [Electron](https://www.electronjs.org/) + [Typescript](https://www.typescriptlang.org/) starter template.
 
 <br />
 
 ## Getting Started
 
-Unfortunately you must use `pnpm` as there are issues that arise when using `pnpm` or `yarn`
-
-|         |                                                   |
-| ------- | ------------------------------------------------- |
-| Clone   | · `pnpm exec degit fractalhq/sveltekit-electron ` |
 | Install | · `pnpm install`                                  |
 | Develop | · `pnpm dev`                                      |
 | Build   | · `pnpm build`                                    |
