@@ -1,23 +1,24 @@
 {
 	"name": "sveltekit-electron-typescript",
 	"version": "1.0.0",
-	"private": true,
 	"description": "Minimal Sveltekit + Electron + Typescript starter template.",
-	"main": "src/electron.cjs",
-  "license": "MIT",
-	"type": "module",
+  
+	"license": "MIT",
 	"author": "Morgan Dilling <morgan@morgandilling.dev> (https://morgandilling.dev)",
   "contributors": [
-    {
-      "name": "Morgan Dilling",
+		{
+			"name": "Morgan Dilling",
       "email": "morgan@morgandilling.dev",
       "url": "https://morgandilling.dev"
     },
     {
-      "name": "Braden Wiggins"
+			"name": "Braden Wiggins"
     }
   ],
 
+	"main": "src/electron.cjs",
+	"type": "module",
+	
 	"scripts": {
 		"dev": "cross-env NODE_ENV=dev pnpm dev:all",
 		"dev:all": "concurrently -n=svelte,electron -c='#ff3e00',blue \"pnpm dev:svelte\" \"pnpm dev:electron\"",
@@ -30,9 +31,11 @@
 	"engines": {
 		"pnpm": ">=8"
 	},
+	
 	"browserslist": [
-		"Chrome 89"
+		"last 2 versions, not dead, > 0.2%"
 	],
+
 	"dependencies": {
 		"electron-context-menu": "^3.6.1",
 		"electron-reloader": "^1.2.3",
@@ -70,5 +73,7 @@
 		"electron": {
 			"got": "^12.5.1"
 		}
-	}
+	},
+
+	"private": true
 }
