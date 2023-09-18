@@ -16,14 +16,14 @@
     }
   ],
 
-	"main": "src/electron.ts",
+	"main": "src/electron/app.ts",
 	"type": "module",
 	
 	"scripts": {
 		"dev": "cross-env NODE_ENV=dev pnpm dev:all",
 		"dev:all": "concurrently -n=svelte,electron -c='#ff3e00',blue \"pnpm dev:svelte\" \"pnpm dev:electron\"",
 		"dev:svelte": "vite dev",
-		"dev:electron": "electron -r ts-node/register src/electron/electron.ts",
+		"dev:electron": "electron -r ts-node/register src/electron/app.ts",
 		"build": "cross-env NODE_ENV=production pnpm build:svelte && pnpm build:electron",
 		"build:svelte": "vite build",
 		"build:electron": "electron-builder -mwl --config build.config.json"
