@@ -1,8 +1,8 @@
-const windowStateManager = require('electron-window-state');
-const { app, BrowserWindow, ipcMain } = require('electron');
-const contextMenu = require('electron-context-menu');
-const serve = require('electron-serve');
-const path = require('path');
+import windowStateManager from 'electron-window-state';
+import { app, BrowserWindow, ipcMain, WebPreferences } from 'electron';
+import contextMenu from 'electron-context-menu';
+import serve from 'electron-serve';
+import path from 'path';
 
 try {
 	require('electron-reloader')(module);
@@ -13,7 +13,7 @@ try {
 const serveURL = serve({ directory: '.' });
 const port = process.env.PORT || 5173;
 const dev = !app.isPackaged;
-let mainWindow;
+let mainWindow: BrowserWindow | null;
 
 function createWindow() {
 	let windowState = windowStateManager({
@@ -32,12 +32,12 @@ function createWindow() {
 		minHeight: 450,
 		minWidth: 500,
 		webPreferences: {
-			enableRemoteModule: true,
+			// enableRemoteModule: true,
 			contextIsolation: true,
 			nodeIntegration: true,
 			spellcheck: false,
 			devTools: dev,
-			preload: path.join(__dirname, 'preload.cjs'),
+			preload: path.join(__dirname, 'preload.ts'),
 		},
 		x: windowState.x,
 		y: windowState.y,
@@ -70,8 +70,8 @@ contextMenu({
 	],
 });
 
-function loadVite(port) {
-	mainWindow.loadURL(`http://localhost:${port}`).catch((e) => {
+function loadVite(port: string | number) {
+	mainWindow?.loadURL(`http://localhost:${port}`).catch((e) => {
 		console.log('Error loading URL, retrying', e);
 		setTimeout(() => {
 			loadVite(port);
@@ -100,5 +100,5 @@ app.on('window-all-closed', () => {
 });
 
 ipcMain.on('to-main', (event, count) => {
-	return mainWindow.webContents.send('from-main', `next count is ${count + 1}`);
+	return mainWindow?.webContents.send('from-main', `next count is ${count + 1}`);
 });
