@@ -17,7 +17,6 @@
   ],
 
 	"main": "src/electron/app.ts",
-	"type": "module",
 	
 	"scripts": {
 		"dev": "cross-env NODE_ENV=dev pnpm dev:all",
