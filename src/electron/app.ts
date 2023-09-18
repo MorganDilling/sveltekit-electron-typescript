@@ -1,5 +1,5 @@
 import windowStateManager from 'electron-window-state';
-import { app, BrowserWindow, ipcMain, WebPreferences } from 'electron';
+import { app, BrowserWindow, ipcMain, type WebPreferences } from 'electron';
 import contextMenu from 'electron-context-menu';
 import serve from 'electron-serve';
 import path from 'path';
